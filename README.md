@@ -29,3 +29,23 @@ If the process did not change the parent, then the original parent is the curren
 `getoppid(pid_t pid)` As a result, the function passes the ID of the original parent of the process with the ID pid, if the parent is still running, otherwise it passes 0.
 
 If the process specified pid does not exist, the function passes −1 in the result and sets it errnoto EINVAL.
+
+## Further Notices
+
+The CMakeLists.txt is added in order to open the project in and IDE, e.g. CLion, which will index the files and make easier to add or modify code. 
+
+There are big and small tests, where big tests should be used according to the instruction in README.md, but the small test cases need to be copied to virtual machine running Minix and do the following:
+`make example` if the name of the file containing the test is example.c, then
+
+`./example` to run the test case and see the output.
+
+The big tests are copied and modified version of Antoni's tests:
+ https://github.com/azewierzejew/SO_3_testy
+ 
+The CMakeLists.txt is made with the help of "fake" executable and adding all the headers and executables.
+
+` SOURCES=$(find . | grep -E ".*\.(h|hh|cc|c)$" | sed '$!s/$/ /') && echo "add_executable(arbabik $SOURCES)" `
+
+Run the above code in the source directory and append to a standard CMakeLists.txt to add executable.
+
+### Some staff in tests may be in Polish as this is a project from Operating Systems course in Warsaw Univeristy MIM Faculty.
